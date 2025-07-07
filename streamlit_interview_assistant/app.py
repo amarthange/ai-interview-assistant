@@ -11,7 +11,8 @@ question = st.text_input("Enter your question here:", "")
 
 if st.button("Get Answer") and question:
     with st.spinner("Thinking..."):
-        response = openai.ChatCompletion.create(
+        client = openai.OpenAI()
+        response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "You are an AI interview assistant that gives helpful and professional answers."},
